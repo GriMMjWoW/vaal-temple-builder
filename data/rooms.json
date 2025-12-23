@@ -1,1 +1,35 @@
+{
+  "version": "vaal_0_4",
+  "rooms": [
+    {
+      "id": "corruption_chamber",
+      "name": "Chamber of Corruption",
+      "tier": 1,
+      "stats": {
+        "monster_damage_%": 20,
+        "item_quantity_%": 10,
+        "corruption_chance_%": 5
+      }
+    },
+    {
+      "id": "sacrificial_hall",
+      "name": "Sacrificial Hall",
+      "tier": 2,
+      "stats": {
+        "monster_life_%": 30,
+        "extra_vaal_rewards": 1,
+        "double_corrupt_chance_%": 2
+      }
+    },
+    {
+      "id": "blood_altar",
+      "name": "Blood Altar",
+      "tier": 1,
+      "stats": {
+        "monster_attack_speed_%": 15,
+        "vaal_souls_gain_%": 20
+      }
+    }
+  ]
+}
 
