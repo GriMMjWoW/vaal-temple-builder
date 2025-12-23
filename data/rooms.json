@@ -6,9 +6,18 @@
       "name": "Chamber of Corruption",
       "tier": 1,
       "stats": {
-        "monster_damage_%": 20,
-        "item_quantity_%": 10,
-        "corruption_chance_%": 5
+        "monster_damage": {
+          "type": "increased",
+          "value": 20
+        },
+        "item_quantity": {
+          "type": "increased",
+          "value": 10
+        },
+        "corruption_chance": {
+          "type": "chance",
+          "value": 5
+        }
       }
     },
     {
@@ -16,9 +25,18 @@
       "name": "Sacrificial Hall",
       "tier": 2,
       "stats": {
-        "monster_life_%": 30,
-        "extra_vaal_rewards": 1,
-        "double_corrupt_chance_%": 2
+        "monster_life": {
+          "type": "increased",
+          "value": 30
+        },
+        "extra_vaal_rewards": {
+          "type": "flat",
+          "value": 1
+        },
+        "double_corrupt_chance": {
+          "type": "chance",
+          "value": 2
+        }
       }
     },
     {
@@ -26,10 +44,15 @@
       "name": "Blood Altar",
       "tier": 1,
       "stats": {
-        "monster_attack_speed_%": 15,
-        "vaal_souls_gain_%": 20
+        "monster_attack_speed": {
+          "type": "increased",
+          "value": 15
+        },
+        "vaal_souls_gain": {
+          "type": "more",
+          "value": 20
+        }
       }
     }
   ]
 }
-
