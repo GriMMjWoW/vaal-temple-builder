@@ -16,25 +16,30 @@ function calculateTempleStats(rooms) {
   const total = {};
 
   rooms.forEach(room => {
-    for (const stat in room.stats) {
-      const { type, value } = room.stats[stat];
+    Object.entries(room.stats).forEach(([statName, statData]) => {
+      const { type, value } = statData;
 
-      if (!total[stat]) {
-        total[stat] = { type, value: type === 'more' ? 1 : 0 };
+      if (!total[statName]) {
+        if (type === 'more') {
+          total[statName] = { type, value: 1 };
+        } else {
+          total[statName] = { type, value: 0 };
+        }
       }
 
       if (type === 'increased' || type === 'flat' || type === 'chance') {
-        total[stat].value += value;
+        total[statName].value += value;
       }
 
       if (type === 'more') {
-        total[stat].value *= 1 + value / 100;
+        total[statName].value *= 1 + value / 100;
       }
-    }
+    });
   });
 
   return total;
 }
+
 
 
 async function simulate() {
