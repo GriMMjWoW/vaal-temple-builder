@@ -17,12 +17,25 @@ function calculateTempleStats(rooms) {
 
   rooms.forEach(room => {
     for (const stat in room.stats) {
-      total[stat] = (total[stat] || 0) + room.stats[stat];
+      const { type, value } = room.stats[stat];
+
+      if (!total[stat]) {
+        total[stat] = { type, value: type === 'more' ? 1 : 0 };
+      }
+
+      if (type === 'increased' || type === 'flat' || type === 'chance') {
+        total[stat].value += value;
+      }
+
+      if (type === 'more') {
+        total[stat].value *= 1 + value / 100;
+      }
     }
   });
 
   return total;
 }
+
 
 async function simulate() {
   const data = await loadRooms();
