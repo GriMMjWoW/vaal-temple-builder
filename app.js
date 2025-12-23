@@ -51,10 +51,43 @@ async function simulate() {
   document.getElementById('roomsOutput').textContent =
     JSON.stringify(templeRooms, null, 2);
 
-  document.getElementById('statsOutput').textContent =
-    JSON.stringify(stats, null, 2);
+document.getElementById('statsOutput').textContent =
+  formatStats(stats);
+
 }
+
 
 document
   .getElementById('simulateBtn')
   .addEventListener('click', simulate);
+
+}
+
+
+function formatStats(stats) {
+  const lines = [];
+
+  for (const stat in stats) {
+    const { type, value } = stats[stat];
+
+    if (type === 'increased') {
+      lines.push(`+${value}% increased ${stat}`);
+    }
+
+    if (type === 'flat') {
+      lines.push(`+${value} ${stat}`);
+    }
+
+    if (type === 'chance') {
+      const capped = Math.min(value, 100);
+      lines.push(`${capped}% chance ${stat}`);
+    }
+
+    if (type === 'more') {
+      const percent = Math.round((value - 1) * 100);
+      lines.push(`${percent}% more ${stat}`);
+    }
+  }
+
+  return lines.join('\n');
+}
